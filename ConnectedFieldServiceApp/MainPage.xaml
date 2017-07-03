@@ -1,0 +1,131 @@
+﻿<Page
+    x:Class="ConnectedFieldServiceApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ConnectedFieldServiceApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="DodgerBlue">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" 
+                    Height="50" HorizontalAlignment="Right">
+            <TextBlock Name="ipAddressText"></TextBlock>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="10"
+                    Width="auto">
+            <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                    <TextBlock Text="Temperature" Foreground="White"/>
+                    <Grid VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <controls:RadialGauge x:Name="TempGauge" Grid.Column="1" Value="0"
+                                              Minimum="0" Maximum="180" StepSize="1"
+                                              IsInteractive="False" TickSpacing="20" ScaleWidth="26"
+                                              MinAngle="-150" MaxAngle="150" Unit="C" TickBrush="Gainsboro"
+                                              ScaleTickBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                                              UnitBrush="Black" ValueBrush="Black" NeedleWidth="5" TickLength="18" />
+                    </Grid>
+                    <Slider x:Name="sliderTemperature" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Width="300" Value="50"
+                            Visibility="Collapsed"                            
+                    />
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+                    <TextBlock Text="Humidity" Foreground="White"/>
+                    <Grid VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <controls:RadialGauge x:Name="HumGauge"
+                                              Grid.Column="1" Value="0" Minimum="0"
+                                              Maximum="180" StepSize="1" IsInteractive="False"
+                                              TickSpacing="20" ScaleWidth="26" MinAngle="-150"
+                                              MaxAngle="150" Unit="%" TickBrush="Gainsboro"
+                                              ScaleTickBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                                              UnitBrush="Black" ValueBrush="Black" NeedleWidth="5" TickLength="18" />
+                    </Grid>
+
+                    <Slider x:Name="sliderHumidity" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            Width="300" Value="50"
+                            Visibility="Collapsed"                           
+                   />
+
+                </StackPanel>
+
+
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <Button Name="UpdateDevice" Content="Device Details" 
+                            Width="130" Margin="10" Click="UpdateDevice_Click"/>
+                    <Button Name="Resgister" Content="Register Device" 
+                            Width="130" Margin="10" Click="Resgister_Click"/>
+                </StackPanel>
+
+
+                <ToggleSwitch Name="Start" FontFamily="Segoe" 
+                    Margin="10" FontSize="50"
+                    Toggled="buttonStart" Foreground="White"/>
+
+            </StackPanel>
+            <TextBlock Name="Alerts"/>
+        </StackPanel>
+        <StackPanel Name="DeviceDetailsStack"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center" 
+                    Background="Gray" 
+                    Margin="50" Padding="10" Opacity="100"
+                    Visibility="Collapsed">
+
+            <TextBlock Text="Device ID"/>
+            <TextBox Name="deviceIDText" Width="150" HorizontalAlignment="Left" TabIndex="1"/>
+
+            <TextBlock Text="Iot Hub Uri"/>
+            <TextBox Name="iotHubUriText" Width="500" TabIndex="2"/>
+
+            <TextBlock Text="Device Key / Secret"/>
+            <TextBox Name="deviceKeyText" Width="500" TabIndex="3"/>
+            <TextBlock/>
+
+            <TextBlock Text="Please check/enter the fields above and hit ok." 
+                       FontStyle="Italic"
+                       HorizontalAlignment="Center"/>
+
+            <Button Name="deviceDetailsOK" 
+                    Content="OK"
+                    HorizontalAlignment="Center"
+                    Width="75"
+                    Margin="5"
+                    Click="deviceDetailsOK_Click"/>
+
+
+        </StackPanel>
+
+
+    </Grid>
+</Page>
